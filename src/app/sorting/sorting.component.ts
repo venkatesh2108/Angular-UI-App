@@ -22,7 +22,7 @@ export class SortingComponent implements OnInit {
   sortCards(item:string) {
      
           
-     this.http.get('https://localhost:44371/api/Sorting?cards='+item,{responseType: 'text'}).subscribe(Response=>{
+     this.http.get('https://sortingcards.azurewebsites.net/api/Sorting?cards='+item,{responseType: 'text'}).subscribe(Response=>{
        this.name= Response
      });
    
