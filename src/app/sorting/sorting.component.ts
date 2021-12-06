@@ -10,8 +10,9 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./sorting.component.css']
 })
 export class SortingComponent implements OnInit {
-  name: any ;
-  
+  outputData: any ;
+  userData:any;
+  loading = false;
   constructor( private http: HttpClient) {  }
   
   ngOnInit(): void {
@@ -20,13 +21,13 @@ export class SortingComponent implements OnInit {
    
 
   sortCards(item:string) {
-     
-          
+    this.loading = true;
+        this.userData=item;  
      this.http.get('https://sortingcards.azurewebsites.net/api/Sorting?cards='+item,{responseType: 'text'}).subscribe(Response=>{
-       this.name= Response
+       this.outputData= Response
      });
-   
-          
+     this.loading = false;
+         
   };
   
 }
